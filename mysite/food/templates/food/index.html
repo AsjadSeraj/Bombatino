@@ -1,0 +1,65 @@
+{% extends 'food/base.html' %}
+<!--------------------------------------------------------------------------------------------------------->
+<!-- {% for item in item_list %}
+      {{item.id}} {{item.item_name}} {{item.item_desc}} {{item.item_price}}
+{% endfor %} -->
+
+<!-- {% for item in item_list %}
+      <ul>
+        <li>
+          {{item.id}} -- {{item.item_name}} --  {{item.item_desc}} -- {{item.item_price}} 
+          <a href="/food/{{item.id}}/"> {{item.item_name}}</a>
+          <a href="{% url 'food:detail' item.id %}">{{item.item_name}} </a>
+        </li>
+      </ul>
+      
+{% endfor %} -->
+
+<!--------------------------------------------------------------------------------------------------------->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+    <title>Document</title>
+
+  </head>
+
+  <body>
+    {% block body %}
+    <br>
+    {% for item in item_list %}
+
+    <div class="row">
+      <div class="col-md-3 offset-md-2">
+          <img class="card" height="150px" width="250px" src="{{ item.item_image }}">
+      </div>
+      <div class="col-md-2">
+        <h3>{{ item.item_name}}</h3>
+        <h5>{{ item.item_desc}}</h5>
+        <h6>{{ item.item_price}}</h6>
+      </div>
+      <div class="col-md-4">
+        <a href="{% url 'food:detail' item.id %}"><button class="btn btn-success">{{item.item_name}} Details</button></a>
+      </div>
+    </div>
+    <br>
+    <!-- <ul style="background-color: aqua;">
+      <li>
+        <a href="{% url 'food:detail' item.id %}">{{item.item_name}}</a>
+      
+      </li>
+    </ul> -->
+    <!-- <hr> -->
+    <!-- <ul style="background-color: brown;">
+      <li>
+        <a href="{% url 'food:detail' item.id %}">{{item.item_name}}</a>
+      
+      </li>
+    </ul> -->
+    {% endfor %}
+    {% endblock %}
+  </body>
+</html>
